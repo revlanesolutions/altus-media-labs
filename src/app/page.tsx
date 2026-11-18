@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { homeServiceSummaries } from "@/data/homepage";
@@ -236,9 +236,9 @@ export default function HomePage() {
       <BeforeWeBegin />
 
       {/* Call to action: Have a challenge in mind? */}
-      <div className="bg-muted">
-        <CTA copy="Tell us what you want to improve. We’ll discuss the challenge, see whether we’re a fit, and work out a useful next step." />
-      </div>
+      <CTA copy="Tell us what you want to improve. We'll discuss the challenge, see whether we're a fit, and work out a useful next step." />
     </>
   );
 }
+
+

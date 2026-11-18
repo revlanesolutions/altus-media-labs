@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import { PageHero } from "@/components/site/PageHero";
 import { ArticleFilters } from "@/components/filters/ArticleFilters";
+import { CTA } from "@/components/site/CTA";
 import { getArticleSummaries } from "@/lib/server/blog-content";
 
 export const metadata: Metadata = { title: "Insights & thinking" };
@@ -16,6 +17,11 @@ export default function BlogListingPage() {
       />
       {/* Articles: Topic filters and journal entries */}
       <ArticleFilters articles={getArticleSummaries()} />
+      {/* Call to action: Have a question? */}
+      <CTA
+        title="Have a question or challenge?"
+        copy="Tell us what you're working on. We'll help you find the right next step."
+      />
     </>
   );
 }

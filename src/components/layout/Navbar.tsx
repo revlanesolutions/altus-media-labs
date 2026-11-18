@@ -130,17 +130,6 @@ export function Navbar({ services }: { services: ServiceOption[] }) {
         <div className="site-container flex h-full items-center justify-between gap-4 wide:gap-6">
           <Brand />
           <div className="hidden items-center gap-[14px] lg:flex wide:gap-6">
-            {links.slice(1).map((l) => (
-              <Link
-                className="inline-flex min-h-11 items-center border-b-2 border-transparent text-[16px] text-graphite no-underline hover:text-primary aria-[current=page]:text-primary"
-                key={l.href}
-                href={l.href}
-                aria-current={active(l.href) ? "page" : undefined}
-                onClick={close}
-              >
-                {l.label}
-              </Link>
-            ))}
             <div
               className="relative flex items-center gap-0.5"
               ref={desktop}
@@ -158,7 +147,7 @@ export function Navbar({ services }: { services: ServiceOption[] }) {
             >
               <Link
                 href="/services"
-                className="inline-flex min-h-11 items-center border-b-2 border-transparent text-[16px] text-graphite no-underline hover:text-primary aria-[current=page]:text-primary"
+                className="inline-flex min-h-11 items-center border-b-2 border-transparent text-[16px] text-graphite no-underline hover:text-primary hover:border-primary aria-[current=page]:text-primary aria-[current=page]:border-primary"
                 aria-current={active("/services") ? "page" : undefined}
                 onPointerEnter={(e) => {
                   if (e.pointerType === "mouse") setDropdown(true);
@@ -195,6 +184,17 @@ export function Navbar({ services }: { services: ServiceOption[] }) {
                 </div>
               )}
             </div>
+            {links.slice(1).map((l) => (
+              <Link
+                className="inline-flex min-h-11 items-center border-b-2 border-transparent text-[16px] text-graphite no-underline hover:text-primary hover:border-primary aria-[current=page]:text-primary aria-[current=page]:border-primary"
+                key={l.href}
+                href={l.href}
+                aria-current={active(l.href) ? "page" : undefined}
+                onClick={close}
+              >
+                {l.label}
+              </Link>
+            ))}
 
             <Link
               href="/contact"

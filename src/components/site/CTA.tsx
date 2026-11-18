@@ -16,7 +16,7 @@ export function CTA({
         </div>
         <Link
           href="/contact"
-          className="button button-inverse shrink-0 w-[100%] md:w-auto"
+          className="button button-inverse shrink-0 w-full md:w-auto"
         >
           Start a conversation <ArrowRight size={18} aria-hidden="true" />
         </Link>
