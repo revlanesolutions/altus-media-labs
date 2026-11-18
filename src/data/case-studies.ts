@@ -57,7 +57,6 @@ export const caseStudies: CaseStudy[] = [
       { metric: "Added capacity", value: "7 clients" },
     ],
     timeline: "8 weeks + 4 weeks monitoring",
-    disclaimer: illustrativeDisclaimer,
     content: [
       {
         section: "The Problem Was Intake, Not Bookkeeping",
@@ -109,7 +108,6 @@ export const caseStudies: CaseStudy[] = [
       { metric: "New local stockists", value: "5" },
     ],
     timeline: "8 weeks",
-    disclaimer: illustrativeDisclaimer,
     content: [
       {
         section: "A Good Product with an Inconsistent Presentation",
@@ -157,7 +155,6 @@ export const caseStudies: CaseStudy[] = [
       { metric: "Mobile load time", value: "5.6s → 2.3s" },
     ],
     timeline: "6 months",
-    disclaimer: illustrativeDisclaimer,
     content: [
       {
         section: "Finding the Leaks in the Existing Journey",
@@ -205,7 +202,6 @@ export const caseStudies: CaseStudy[] = [
       { metric: "Kept first appointments", value: "62% → 70%" },
     ],
     timeline: "10 weeks + 3 months optimization",
-    disclaimer: illustrativeDisclaimer,
     content: [
       {
         section: "Separating Leads from Useful Enquiries",

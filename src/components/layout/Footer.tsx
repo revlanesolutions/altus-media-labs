@@ -3,6 +3,7 @@ import { services } from "@/data/services";
 import { Brand } from "@/components/site/Brand";
 import { ArrowUpRight } from "lucide-react";
 import { Newsletter } from "@/components/site/Newsletter";
+import { contactEmail } from "@/lib/site-config";
 export function Footer() {
   return (
     <footer className="border-t border-border pt-16">
@@ -54,6 +55,15 @@ export function Footer() {
                 <Link className="action-link mt-4" href="/contact">
                   Start a conversation <ArrowUpRight size={18} />
                 </Link>
+                <div className="mt-6 border-t border-border pt-4">
+                  <span className="text-meta block">Direct inquiry</span>
+                  <a
+                    href={`mailto:${contactEmail}`}
+                    className="action-link text-primary mt-1 text-sm break-all"
+                  >
+                    {contactEmail}
+                  </a>
+                </div>
               </>
             )}
           </div>

@@ -9,7 +9,6 @@ import { CTA } from "@/components/site/CTA";
 import { Metrics } from "@/components/site/Metrics";
 import { ProcessSection } from "@/components/site/ProcessSection";
 import { ArticleCard } from "@/components/cards/ArticleCard";
-import { EditorialHero } from "@/components/home/heroes/EditorialHero";
 import { WorkHero } from "@/components/home/heroes/WorkHero";
 import { StartingPoint } from "@/components/home/StartingPoint";
 import { BeforeWeBegin } from "@/components/home/BeforeWeBegin";
@@ -21,9 +20,6 @@ export default function HomePage() {
     <>
       {/* Main hero: An editorial contact sheet of case studies */}
       <WorkHero />
-
-      {/* Editorial hero: Retained alternative below the main hero */}
-      <EditorialHero />
 
       {/* Find your starting point: Practical guidance for your business challenge */}
       <StartingPoint />
@@ -75,7 +71,7 @@ export default function HomePage() {
         </div>
       </section>
       {/* Selected work: Thoughtful work. Measurable outcomes. */}
-      <section className="hidden site-section pt-0">
+      <section className="site-section section-divider">
         <div className="site-container">
           <div className="mb-8 flex flex-col items-start justify-between gap-4 md:mb-10 md:flex-row md:items-end md:gap-8">
             <div>

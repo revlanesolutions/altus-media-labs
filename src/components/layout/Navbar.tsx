@@ -198,7 +198,7 @@ export function Navbar({ services }: { services: ServiceOption[] }) {
 
             <Link
               href="/contact"
-              className="button button-primary bg-ink hidden lg:inline-flex"
+              className="button button-primary hidden lg:inline-flex"
             >
               Start a project <ArrowRight size={16} aria-hidden="true" />
             </Link>

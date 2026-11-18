@@ -18,6 +18,9 @@ const sourceSans = localFont({
   display: "swap",
 });
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://altusmedialabs.com",
+  ),
   title: {
     default: "Altus Media Labs — Where strategy meets execution",
     template: "%s — Altus Media Labs",
@@ -29,6 +32,13 @@ export const metadata: Metadata = {
     title: "Altus Media Labs",
     description: "Where strategy meets execution.",
     type: "website",
+    siteName: "Altus Media Labs",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Altus Media Labs",
+    description: "Where strategy meets execution.",
   },
 };
 export default function RootLayout({
