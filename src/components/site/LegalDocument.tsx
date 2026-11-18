@@ -88,7 +88,7 @@ function Blocks({ blocks }: { blocks: LegalBlock[] }) {
         return (
           <h3
             key={index}
-            className="font-display font-[450] text-[18px] text-foreground leading-[1.3] tracking-[-0.025em] mb-3"
+            className="heading-card text-lg font-bold text-foreground mb-3"
           >
             {inlineContent(block.tokens)}
           </h3>
@@ -150,10 +150,10 @@ export function LegalDocument({ document }: { document: LegalContent }) {
       {/* Document header: Title and last updated date from Markdown */}
       <div className="mx-auto max-w-[1432px] px-6 lg:px-10 pt-12 md:pt-16 pb-8 md:pb-12">
         <div className="max-w-3xl mx-auto">
-          <h1 className="font-display font-[450] text-[48px] md:text-[64px] leading-[1.1] text-foreground tracking-[-0.025em] mb-4">
+          <h1 className="heading-display mb-4">
             {document.title}
           </h1>
-          <p className="font-body text-[14px] text-smoke tracking-normal">
+          <p className="text-meta">
             Last updated: {document.updated}
           </p>
         </div>
@@ -161,12 +161,12 @@ export function LegalDocument({ document }: { document: LegalContent }) {
       {/* Document content: Introduction and named legal sections */}
       <div className="mx-auto max-w-3xl px-6 lg:px-10 pb-24 md:pb-32">
         <div className="border-t border-border pt-12">
-          <div className="font-body text-[16px] text-graphite leading-[1.75] tracking-normal space-y-10">
+          <div className="text-body text-base leading-relaxed space-y-10">
             <Blocks blocks={document.introduction} />
             {document.sections.map((section, index) => (
               /* Legal section: Name comes from its Markdown ## heading */
               <section key={index}>
-                <h2 className="font-display font-[450] text-[24px] md:text-[28px] text-foreground leading-[1.3] tracking-[-0.025em] mb-4">
+                <h2 className="heading-card text-xl md:text-2xl font-bold text-foreground mb-4">
                   {inlineContent(section.heading.tokens)}
                 </h2>
                 <Blocks blocks={section.blocks} />

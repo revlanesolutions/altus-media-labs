@@ -59,7 +59,7 @@ export default async function BlogPostDetailPage({ params }: Props) {
                 All articles
               </Link>
               <span className="text-eyebrow mb-5">{post.category}</span>
-              <h1 className="heading-section text-[clamp(36px,4.5vw,60px)]">
+              <h1 className="heading-display">
                 {post.title}
               </h1>
               <p className="text-lead mt-7">{post.excerpt}</p>

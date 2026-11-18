@@ -104,7 +104,7 @@ export function ArticleContent({ blocks }: { blocks: ArticleBlock[] }) {
             const Heading = block.depth === 2 ? "h2" : "h3";
             return (
               <Heading
-                className={`mt-12 mb-5 scroll-mt-28 font-display font-medium leading-[1.2] text-foreground ${block.depth === 2 ? "text-[32px]" : "text-[28px]"}`}
+                className={`mt-12 mb-5 scroll-mt-28 font-display font-bold leading-snug text-foreground ${block.depth === 2 ? "text-2xl md:text-3xl" : "text-xl md:text-2xl"}`}
                 id={`section-${index}`}
                 key={index}
               >

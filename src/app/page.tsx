@@ -48,13 +48,13 @@ export default function HomePage() {
           <div className="grid grid-cols-1 border-t border-border md:grid-cols-2 lg:grid-cols-3">
             {services.map((s, i) => (
               <Link
-                className="flex flex-col gap-4 border-b border-border px-0 py-7 text-inherit no-underline transition-[background] duration-[180ms] ease-[ease] hover:bg-muted md:p-8 md:max-lg:odd:border-r lg:[&:not(:nth-child(3n))]:border-r"
+                className="flex flex-col gap-4 border-b border-border px-0 py-7 text-inherit no-underline transition-[background] duration-200 hover:bg-muted/70 md:p-8 md:max-lg:odd:border-r lg:[&:not(:nth-child(3n))]:border-r"
                 href={`/services/${s.slug}`}
                 key={s.slug}
               >
-                <div className="mb-3 flex items-center justify-between text-[13px] text-terracotta">
+                <div className="mb-3 flex items-center justify-between text-xs font-bold text-primary tracking-wider uppercase">
                   <span>0{i + 1}</span>
-                  <ArrowUpRight size={20} />
+                  <ArrowUpRight size={18} />
                 </div>
                 <h3 className="heading-card">
                   {homeServiceSummaries[s.slug]?.title ?? s.shortTitle}
@@ -70,6 +70,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
       {/* Selected work: Thoughtful work. Measurable outcomes. */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -98,23 +99,25 @@ export default function HomePage() {
                 <Media
                   image={cs.image || imageFor(cs.slug)}
                   aspectRatio="landscape"
+                  radiusClassName="rounded-2xl"
+                  className="shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.01]"
                 />
               </Link>
               <div>
                 <span className="text-meta">
                   {cs.client} / {cs.industry}
                 </span>
-                <h3 className="heading-section mt-4 mb-5 text-[clamp(30px,3vw,42px)]">
+                <h3 className="heading-section mt-4 mb-5">
                   {cs.title}
                 </h3>
                 <p className="text-body text-base">
                   {serviceTitles(cs.serviceSlugs).join(" / ")}
                 </p>
                 <div className="text-left mt-6">
-                  <strong className="block text-[clamp(28px,3vw,42px)] font-semibold leading-[1.15] tabular-nums [overflow-wrap:anywhere]">
+                  <strong className="block text-3xl md:text-4xl font-bold leading-tight tabular-nums text-foreground">
                     {cs.results[0].value}
                   </strong>
-                  <span className="mt-3 block text-[14px] text-smoke">
+                  <span className="mt-2 block text-sm text-smoke">
                     {cs.results[0].metric}
                   </span>
                 </div>
@@ -126,10 +129,10 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+
       {/* Our approach at a glance: Services, delivery, and engagement options */}
       <Metrics
         ariaLabel="Our approach at a glance"
-        textured
         items={[
           {
             value: String(services.length),
@@ -153,6 +156,7 @@ export default function HomePage() {
           },
         ]}
       />
+
       {/* How we work: Clarity first. Progress together. */}
       <ProcessSection
         eyebrow="How we work"
@@ -198,11 +202,16 @@ export default function HomePage() {
           },
         ]}
       >
-        <Media image={editorial.systems} />
+        <Media
+          image={editorial.systems}
+          radiusClassName="rounded-2xl"
+          className="shadow-sm"
+        />
         <Link className="action-link mt-6" href="/about">
           Meet Altus <ArrowRight size={18} />
         </Link>
       </ProcessSection>
+
       {/* Our journal: Better questions. Better decisions. */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -228,6 +237,7 @@ export default function HomePage() {
             ))}
         </div>
       </section>
+
       {/* Before we begin: Scope, preparation, and working with your existing setup */}
       <BeforeWeBegin />
 
@@ -236,5 +246,3 @@ export default function HomePage() {
     </>
   );
 }
-
-

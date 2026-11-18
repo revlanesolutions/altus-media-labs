@@ -19,6 +19,7 @@ export default function AboutPage() {
         description="We bring strategy, design, engineering, and marketing together around one shared purpose: moving your business forward."
         image={editorial.growth}
       />
+
       {/* Our perspective: The idea is only the beginning */}
       <section className="site-section section-divider">
         <div className="site-container grid gap-8 md:grid-cols-2 md:gap-10 wide:gap-[72px]">
@@ -51,6 +52,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       {/* What guides us: Principles in practice */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -76,19 +78,24 @@ export default function AboutPage() {
               },
             ].map((v, i) => (
               <div
-                className="grid grid-cols-[32px_1fr] gap-5 border-t border-border py-6"
+                className="grid grid-cols-[36px_1fr] gap-5 border-t border-border py-6"
                 key={v.title}
               >
-                <span className="text-[13px] text-terracotta">0{i + 1}</span>
+                <span className="text-xs font-bold text-primary tracking-wider pt-1">
+                  0{i + 1}
+                </span>
                 <div>
                   <h3 className="heading-card">{v.title}</h3>
-                  <p className="mt-3 text-graphite">{v.copy}</p>
+                  <p className="mt-2 text-base text-graphite leading-relaxed">
+                    {v.copy}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
       {/* The people: Different disciplines. A shared commitment. */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -104,29 +111,35 @@ export default function AboutPage() {
               Work with us <ArrowRight size={18} />
             </Link>
           </div>
-          <div className="grid grid-cols-1 gap-x-5 gap-y-7 xs:grid-cols-2 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 gap-x-6 gap-y-8 xs:grid-cols-2 md:grid-cols-3 md:gap-8">
             {team.map((t) => (
               <article key={t.name} className="border-t border-border pt-6">
                 {t.photo ? (
-                  <Media image={t.photo} aspectRatio="portrait" />
+                  <Media
+                    image={t.photo}
+                    aspectRatio="portrait"
+                    radiusClassName="rounded-2xl"
+                    className="shadow-sm"
+                  />
                 ) : (
                   <span
-                    className="mb-5 inline-flex size-14 items-center justify-center rounded-[50%] bg-blue-soft font-semibold text-primary"
+                    className="mb-5 inline-flex size-14 items-center justify-center rounded-full bg-blue-soft font-semibold text-primary"
                     aria-hidden="true"
                   >
                     {t.initials}
                   </span>
                 )}
-                <h3 className="heading-card">{t.name}</h3>
-                <p className="text-primary text-base mt-2 mb-4">{t.role}</p>
-                <p className="text-body text-base">{t.bio}</p>
+                <h3 className="heading-card mt-4">{t.name}</h3>
+                <p className="text-meta mt-1">{t.role}</p>
+                <p className="text-body mt-3 text-sm">{t.bio}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
-      {/* Call to action: Let’s do something meaningful */}
-      <CTA title="Let’s do something meaningful." />
+
+      {/* Call to action: Meet the team */}
+      <CTA title="Let’s work together." />
     </>
   );
 }

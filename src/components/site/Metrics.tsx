@@ -1,7 +1,6 @@
 export function Metrics({
   items,
   ariaLabel = "Results",
-  textured = false,
 }: {
   items: { value: string; label: string; description?: string }[];
   ariaLabel?: string;
@@ -9,26 +8,20 @@ export function Metrics({
 }) {
   return (
     <section
-      className="relative overflow-hidden bg-foreground py-14 text-card md:py-12"
+      className="relative overflow-hidden bg-slate-950 py-16 text-white md:py-20 border-y border-slate-900"
       aria-label={ariaLabel}
     >
-      {textured && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 blur-[6px] bg-[url('/images/metrics-sand-original.webp')] bg-cover bg-center opacity-[0.72]"
-        />
-      )}
-      <div className="site-container relative grid grid-cols-1 gap-x-5 gap-y-8 md:grid-cols-4 md:gap-8">
+      <div className="site-container relative grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         {items.map((item) => (
           <div className="text-center" key={item.label}>
-            <strong className="block text-[clamp(40px,4vw,54px)] font-semibold leading-[1.15] tabular-nums [overflow-wrap:anywhere]">
+            <strong className="block text-4xl md:text-5xl font-extrabold tracking-tight tabular-nums text-white">
               {item.value}
             </strong>
-            <span className="mt-3 block text-[16px] text-inverse-muted">
+            <span className="mt-3 block text-xs font-bold uppercase tracking-wider text-blue-400">
               {item.label}
             </span>
             {item.description && (
-              <p className="mx-auto mt-2 max-w-[28ch] text-[14px] text-inverse-muted">
+              <p className="mx-auto mt-2 max-w-[28ch] text-sm text-slate-300 leading-relaxed">
                 {item.description}
               </p>
             )}

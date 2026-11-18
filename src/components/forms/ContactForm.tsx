@@ -8,8 +8,9 @@ import {
   contactFieldErrors,
   type ContactFields as Fields,
 } from "@/lib/form-validation";
+
 const inputClasses =
-  "min-h-12 w-full min-w-0 rounded-[12px] border border-input bg-card px-3.5 py-3 text-[16px] focus:border-primary aria-invalid:border-terracotta aria-invalid:focus:border-primary";
+  "min-h-12 w-full min-w-0 rounded-xl border border-input bg-white px-4 py-3 text-base text-foreground focus:border-primary focus:ring-2 focus:ring-blue-100 transition-colors aria-invalid:border-red-500";
 
 export function ContactForm({
   deliveryEnabled = false,
@@ -38,10 +39,12 @@ export function ContactForm({
     {},
   );
   const statusRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (status === "sent" || status === "error" || status === "draft")
       statusRef.current?.focus();
   }, [status]);
+
   function update(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -50,6 +53,7 @@ export function ContactForm({
     setFields({ ...fields, [e.target.name]: e.target.value });
     setErrors({ ...errors, [e.target.name]: undefined });
   }
+
   async function submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const next = contactFieldErrors(fields);
@@ -93,6 +97,7 @@ export function ContactForm({
       setStatus("error");
     }
   }
+
   const field = (
     id: keyof Fields,
     label: string,
@@ -100,7 +105,7 @@ export function ContactForm({
     type = "text",
   ) => (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id} className="text-[16px] font-semibold">
+      <label htmlFor={id} className="text-sm font-semibold text-foreground">
         {label}
         {required ? " *" : ""}
       </label>
@@ -120,29 +125,30 @@ export function ContactForm({
         aria-describedby={errors[id] ? `${id}-error` : undefined}
       />
       {errors[id] && (
-        <p id={`${id}-error`} className="text-[14px] text-terracotta">
+        <p id={`${id}-error`} className="text-xs font-semibold text-red-600">
           {errors[id]}
         </p>
       )}
     </div>
   );
+
   return (
     <>
       {status === "sent" ? (
         <div
-          className="rounded-[12px] border border-primary bg-blue-soft p-5"
+          className="rounded-2xl border border-primary/20 bg-blue-soft p-6 md:p-8"
           ref={statusRef}
           tabIndex={-1}
           role="status"
         >
-          <CheckCircle2 className="text-primary mb-4" />
+          <CheckCircle2 className="text-primary mb-4 size-8" />
           <h2 className="heading-section">Enquiry received.</h2>
-          <p className="mt-4">
+          <p className="mt-4 text-graphite text-base">
             Thank you for telling us about your project. We’ll review your
             details and reply to {fields.email}.
           </p>
           <button
-            className="action-link mt-4"
+            className="action-link mt-6"
             onClick={() => {
               setStatus("idle");
               setFields({
@@ -166,8 +172,8 @@ export function ContactForm({
             {field("email", "Email address", true, "email")}
             {field("company", "Company")}
             <div className="flex flex-col gap-2">
-              <label htmlFor="budget" className="text-[16px] font-semibold">
-                Budget range <span className="text-meta">(optional)</span>
+              <label htmlFor="budget" className="text-sm font-semibold text-foreground">
+                Budget range <span className="text-meta font-normal">(optional)</span>
               </label>
               <select
                 className={inputClasses}
@@ -190,18 +196,18 @@ export function ContactForm({
             </div>
           </div>
           <fieldset>
-            <legend className="text-[16px] font-semibold mb-4">
+            <legend className="text-sm font-semibold text-foreground mb-4">
               Services you’re interested in{" "}
-              <span className="text-meta">(optional)</span>
+              <span className="text-meta font-normal">(optional)</span>
             </legend>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               {services.map((s) => (
                 <label
-                  className="flex min-h-12 cursor-pointer items-center gap-3 rounded-[12px] border border-input px-4 py-3 text-[16px] has-checked:border-primary has-checked:bg-blue-soft"
+                  className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border border-input px-4 py-3 text-sm font-medium has-checked:border-primary has-checked:bg-blue-soft transition-colors"
                   key={s.slug}
                 >
                   <input
-                    className="size-[18px] shrink-0 accent-primary"
+                    className="size-4 shrink-0 accent-primary"
                     type="checkbox"
                     name="services"
                     value={s.slug}
@@ -220,7 +226,7 @@ export function ContactForm({
             </div>
           </fieldset>
           <div className="flex flex-col gap-2">
-            <label htmlFor="description" className="text-[16px] font-semibold">
+            <label htmlFor="description" className="text-sm font-semibold text-foreground">
               Tell us about your project *
             </label>
             <textarea
@@ -240,7 +246,7 @@ export function ContactForm({
               }
             />
             {errors.description ? (
-              <p className="text-[14px] text-terracotta" id="description-error">
+              <p className="text-xs font-semibold text-red-600" id="description-error">
                 {errors.description}
               </p>
             ) : (
@@ -272,32 +278,35 @@ export function ContactForm({
           )}
           {status === "error" && (
             <div
-              className="rounded-[12px] border border-terracotta bg-clay-soft p-5"
+              className="rounded-2xl border border-red-200 bg-red-50 p-5 text-red-800"
               ref={statusRef}
               tabIndex={-1}
               role="alert"
             >
-              <AlertCircle size={20} />
-              <p>{message}</p>
-              <a href={`mailto:${contactEmail}`} className="action-link">
+              <div className="flex items-center gap-2 font-semibold">
+                <AlertCircle size={20} className="text-red-600" />
+                <span>Unable to send enquiry</span>
+              </div>
+              <p className="mt-2 text-sm">{message}</p>
+              <a href={`mailto:${contactEmail}`} className="action-link mt-3 text-red-700">
                 Email us directly
               </a>
             </div>
           )}
           {status === "draft" && (
             <div
-              className="rounded-[12px] border border-primary bg-blue-soft p-5"
+              className="rounded-2xl border border-primary/20 bg-blue-soft p-5"
               ref={statusRef}
               tabIndex={-1}
               role="status"
             >
-              <p>
+              <p className="font-semibold text-foreground">
                 Your draft is ready in your email app. Nothing has been
                 submitted through this website.
               </p>
-              <p>
+              <p className="mt-2 text-sm text-graphite">
                 If your email app did not open, email{" "}
-                <a className="underline" href={`mailto:${contactEmail}`}>
+                <a className="underline text-primary" href={`mailto:${contactEmail}`}>
                   {contactEmail}
                 </a>
                 . Your details remain in the form.

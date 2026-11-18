@@ -6,4 +6,4 @@ export type ProjectSummary = Pick<
   CaseStudy,
   "slug" | "image" | "title" | "client" | "industry" | "results"
 > & { services: string[] };
-export type ServiceOption = Pick<Service, "slug" | "title" | "shortTitle">;
+export type ServiceOption = Pick<Service, "slug" | "title" | "shortTitle" | "tagline">;

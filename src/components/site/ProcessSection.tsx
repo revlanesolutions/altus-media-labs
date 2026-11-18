@@ -35,15 +35,17 @@ export function ProcessSection({
         <div>
           {items.map((item) => (
             <div
-              className="grid grid-cols-[32px_1fr] gap-5 border-t border-border py-6 first:border-t-0"
+              className="grid grid-cols-[36px_1fr] gap-5 border-t border-border py-6 first:border-t-0"
               key={item.step}
             >
-              <span className="text-[13px] text-terracotta">
+              <span className="text-xs font-bold text-primary tracking-wider pt-1">
                 {String(item.step).padStart(2, "0")}
               </span>
               <div>
                 <h3 className="heading-card">{item.title}</h3>
-                <p className="mt-3 text-graphite">{item.description}</p>
+                <p className="mt-2 text-base text-graphite leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             </div>
           ))}

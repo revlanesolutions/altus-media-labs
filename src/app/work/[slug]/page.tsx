@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { caseStudies } from "@/data/case-studies";
 import { getProject, serviceTitles } from "@/lib/server/content";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { imageFor } from "@/data/imagery";
 import { Media } from "@/components/site/Media";
 import { CTA } from "@/components/site/CTA";
@@ -32,7 +32,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
   const index = caseStudies.findIndex((c) => c.slug === slug);
   if (index < 0) notFound();
   const cs = caseStudies[index];
-  const next = caseStudies[(index + 1) % caseStudies.length];
+
   return (
     <>
       {/* Hero: Project overview */}
@@ -51,18 +51,18 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           )}
           <dl className="mt-10 flex flex-wrap gap-6 border-y border-border py-7 md:gap-x-12">
             <div>
-              <dt className="text-[13px] text-smoke">Client</dt>
-              <dd className="mt-1.5 text-[17px]">{cs.client}</dd>
+              <dt className="text-xs font-bold uppercase tracking-wider text-smoke">Client</dt>
+              <dd className="mt-1.5 text-base font-semibold text-foreground">{cs.client}</dd>
             </div>
             <div>
-              <dt className="text-[13px] text-smoke">Expertise</dt>
-              <dd className="mt-1.5 text-[17px]">
+              <dt className="text-xs font-bold uppercase tracking-wider text-smoke">Expertise</dt>
+              <dd className="mt-1.5 text-base font-semibold text-foreground">
                 {serviceTitles(cs.serviceSlugs).join(" / ")}
               </dd>
             </div>
             <div>
-              <dt className="text-[13px] text-smoke">Timeline</dt>
-              <dd className="mt-1.5 text-[17px]">{cs.timeline}</dd>
+              <dt className="text-xs font-bold uppercase tracking-wider text-smoke">Timeline</dt>
+              <dd className="mt-1.5 text-base font-semibold text-foreground">{cs.timeline}</dd>
             </div>
           </dl>
           <div className="mt-10">
@@ -70,11 +70,14 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               image={cs.image || imageFor(slug)}
               priority
               aspectRatio="wide"
+              radiusClassName="rounded-2xl"
+              className="shadow-sm"
               sizes="(max-width: 1400px) 100vw, 1360px"
             />
           </div>
         </div>
       </section>
+
       {/* 01 / The challenge: Where we started */}
       <section className="site-section section-divider">
         <div className="site-container grid gap-8 md:grid-cols-2 md:gap-10 wide:gap-[72px]">
@@ -85,6 +88,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           <p className="text-reading">{cs.challenge}</p>
         </div>
       </section>
+
       {/* 02 / The approach: A focused response */}
       <section className="site-section section-divider">
         <div className="site-container grid gap-8 md:grid-cols-2 md:gap-10 wide:gap-[72px]">
@@ -95,6 +99,7 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           <p className="text-reading">{cs.approach}</p>
         </div>
       </section>
+
       {/* 03 / The results: What changed */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -103,10 +108,10 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           <div className="grid grid-cols-2 gap-x-5 gap-y-8 md:grid-cols-4 md:gap-8">
             {cs.results.map((r) => (
               <div className="text-left" key={r.metric}>
-                <strong className="block text-[clamp(28px,3vw,42px)] font-semibold leading-[1.15] tabular-nums [overflow-wrap:anywhere]">
+                <strong className="block text-3xl md:text-4xl font-bold leading-tight tabular-nums text-foreground">
                   {r.value}
                 </strong>
-                <span className="mt-3 block text-[14px] text-smoke">
+                <span className="mt-2 block text-sm text-smoke">
                   {r.metric}
                 </span>
               </div>
@@ -114,18 +119,20 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           </div>
         </div>
       </section>
+
       {/* Client testimonial, shown only when a verified quote is available */}
       {cs.testimonial && (
         <section className="site-section section-divider">
-          <div className="site-container reading-container border-l-[3px] border-terracotta pl-8">
-            <blockquote className="mb-6 font-display text-[clamp(26px,3vw,36px)] leading-[1.35]">
+          <div className="site-container reading-container border-l-4 border-primary pl-8">
+            <blockquote className="mb-6 font-display text-2xl md:text-3xl font-semibold leading-snug text-foreground">
               “{cs.testimonial.quote}”
             </blockquote>
-            <p>{cs.testimonial.author}</p>
+            <p className="font-semibold text-foreground">{cs.testimonial.author}</p>
             <p className="text-meta">{cs.testimonial.role}</p>
           </div>
         </section>
       )}
+
       {/* 04 / Behind the work: How it came together */}
       <section className="site-section section-divider">
         <div className="site-container">
@@ -135,14 +142,13 @@ export default async function CaseStudyDetailPage({ params }: Props) {
           </div>
           <div>
             {cs.content.map((s, i) => (
-              /* Story section: Title and body from cs.content */
               <section
                 className="border-t border-border py-12 first:border-t-0 first:pt-4"
                 key={s.section}
               >
                 <div className="reading-container">
                   <h2
-                    className="mb-5 scroll-mt-28 font-display text-[32px] font-medium leading-[1.2] text-foreground"
+                    className="heading-section text-2xl md:text-3xl font-bold mb-6 scroll-mt-28"
                     id={`story-${i + 1}`}
                   >
                     {s.section}
@@ -154,7 +160,8 @@ export default async function CaseStudyDetailPage({ params }: Props) {
                     <Media
                       image={s.image}
                       aspectRatio="wide"
-                      className="border border-foreground"
+                      radiusClassName="rounded-2xl"
+                      className="border border-border shadow-sm"
                       sizes="(max-width: 767px) 100vw, 68ch"
                     />
                   </div>
@@ -162,15 +169,11 @@ export default async function CaseStudyDetailPage({ params }: Props) {
               </section>
             ))}
           </div>
-          <div className="reading-container">
-            <Link href={`/work/${next.slug}`} className="action-link mt-10">
-              Next project: {next.client} <ArrowRight size={18} />
-            </Link>
-          </div>
         </div>
       </section>
-      {/* Call to action: Have a challenge in mind? */}
-      <CTA />
+
+      {/* Call to action: Build your next chapter */}
+      <CTA title="Ready to build your next chapter?" />
     </>
   );
 }

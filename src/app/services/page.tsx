@@ -18,28 +18,30 @@ export default function ServicesPage() {
         title="Built around your next move."
         description="Six integrated disciplines. One team connecting strategy, technology, and growth around the needs of your business."
       />
+
       {/* Services: Six integrated disciplines */}
       <section className="site-section section-divider">
         <div className="site-container grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2">
           {services.map((s, i) => (
             <Link
               href={`/services/${s.slug}`}
-              className="group/work block min-w-0 rounded-[24px] text-inherit no-underline"
+              className="group/work block min-w-0 rounded-2xl text-inherit no-underline transition-transform duration-200 hover:-translate-y-0.5"
               key={s.slug}
             >
               <Media
                 image={s.image || imageFor(s.slug)}
                 aspectRatio="landscape"
-                className="transition-shadow duration-[180ms] ease-[ease] group-hover/work:shadow-[0_0_0_2px_var(--color-primary)]"
+                radiusClassName="rounded-2xl"
+                className="transition-all duration-300 group-hover/work:shadow-md group-hover/work:scale-[1.01]"
               />
               <div className="pt-6">
-                <span className="text-eyebrow mb-5">
+                <span className="text-eyebrow mb-4">
                   0{i + 1} / {s.shortTitle}
                 </span>
-                <h2 className="heading-card group-hover/work:text-primary">
+                <h2 className="heading-card group-hover/work:text-primary transition-colors">
                   {s.tagline}
                 </h2>
-                <p className="text-body mt-4">
+                <p className="text-body mt-3">
                   {s.description.split(". ")[0]}.
                 </p>
                 <span className="action-link mt-4">
@@ -50,6 +52,7 @@ export default function ServicesPage() {
           ))}
         </div>
       </section>
+
       {/* Call to action: Not sure where to start? */}
       <CTA
         title="Not sure where to start?"

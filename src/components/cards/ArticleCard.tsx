@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Media } from "@/components/site/Media";
 import type { ArticleSummary } from "@/data/content-types";
 import { formatDate } from "@/lib/dates";
+
 export function ArticleCard({
   post,
   row = false,
@@ -22,9 +23,9 @@ export function ArticleCard({
       <Media
         image={post.image}
         radiusClassName={
-          row ? "rounded-[12px] md:rounded-[24px]" : "rounded-[20px]"
+          row ? "rounded-xl md:rounded-2xl" : "rounded-2xl"
         }
-        className={row ? "max-md:aspect-square" : ""}
+        className={row ? "max-md:aspect-square" : "transition-transform duration-300 group-hover/article:scale-[1.01]"}
         sizes={
           row
             ? "(max-width: 767px) 100px, 200px"
@@ -35,8 +36,8 @@ export function ArticleCard({
         <span
           className={
             row
-              ? "text-eyebrow mb-2.5 max-md:text-[11px]"
-              : "text-eyebrow mt-6 mb-5"
+              ? "text-eyebrow mb-2.5 text-xs"
+              : "text-eyebrow mt-6 mb-4 text-xs"
           }
         >
           {post.category}
@@ -44,14 +45,14 @@ export function ArticleCard({
         <h3
           className={
             row
-              ? "heading-card group-hover/article:text-primary max-md:text-[23px]"
-              : "heading-card my-3.5 group-hover/article:text-primary"
+              ? "heading-card group-hover/article:text-primary transition-colors text-lg md:text-xl"
+              : "heading-card my-3 group-hover/article:text-primary transition-colors"
           }
         >
           {post.title}
         </h3>
         {!row && <p className="text-body text-base">{post.excerpt}</p>}
-        <p className={row ? "text-meta mt-3" : "text-meta mt-4"}>
+        <p className={row ? "text-meta mt-2" : "text-meta mt-3"}>
           {post.author} · {post.readTime}{" "}
           {!row && (
             <>
@@ -62,7 +63,7 @@ export function ArticleCard({
       </div>
       {row && (
         <ArrowUpRight
-          className="hidden md:block"
+          className="hidden md:block text-smoke group-hover/article:text-primary transition-colors"
           size={20}
           aria-hidden="true"
         />

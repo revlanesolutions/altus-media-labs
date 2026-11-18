@@ -5,18 +5,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { RouteFocus } from "@/components/site/RouteFocus";
 import { getServiceOptions } from "@/lib/server/content";
-const newsreader = localFont({
-  src: "../../public/fonts/newsreader.ttf",
-  variable: "--font-newsreader",
-  weight: "200 800",
-  display: "swap",
-});
+
 const sourceSans = localFont({
   src: "../../public/fonts/source-sans-3.ttf",
   variable: "--font-source-sans",
   weight: "200 900",
   display: "swap",
 });
+
 export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://altusmedialabs.com",
@@ -41,6 +37,7 @@ export const metadata: Metadata = {
     description: "Where strategy meets execution.",
   },
 };
+
 export default function RootLayout({
   children,
 }: {
@@ -49,10 +46,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${newsreader.variable} ${sourceSans.variable} bg-background font-body text-[18px] leading-[1.6] text-foreground antialiased`}
+        className={`${sourceSans.variable} font-sans bg-background text-foreground antialiased selection:bg-blue-100 selection:text-foreground`}
       >
         <a
-          className="fixed -top-[100px] left-5 z-[100] rounded-[8px] bg-card px-5 py-3 text-primary focus:top-3"
+          className="fixed -top-24 left-5 z-[100] rounded-xl border border-border bg-card px-5 py-3 font-semibold text-primary shadow-lg transition-transform focus:top-4"
           href="#main-content"
         >
           Skip to content
@@ -61,7 +58,7 @@ export default function RootLayout({
         <main
           id="main-content"
           tabIndex={-1}
-          className="min-h-[60vh] pt-[76px] md:pt-[88px]"
+          className="min-h-[60vh] pt-[76px] md:pt-[84px]"
         >
           {children}
         </main>

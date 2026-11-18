@@ -80,7 +80,6 @@ export function StartingPoint() {
   }
 
   return (
-    // Find your starting point: Match a business challenge to a useful first step.
     <section
       id="starting-point"
       aria-labelledby="starting-point-title"
@@ -102,7 +101,7 @@ export function StartingPoint() {
             role="tablist"
             aria-label="Choose your business challenge"
             aria-orientation="vertical"
-            className="grid min-w-0 gap-2"
+            className="grid min-w-0 gap-2.5"
           >
             {startingPoints.map((point, index) => (
               <button
@@ -118,23 +117,34 @@ export function StartingPoint() {
                 tabIndex={selected === index ? 0 : -1}
                 onClick={() => setSelected(index)}
                 onKeyDown={(event) => navigateChoices(event, index)}
-                className={`flex min-h-16 w-full items-center gap-4 rounded-[4px] px-4 py-5 text-left transition-colors md:px-6 ${selected === index ? "bg-primary text-card" : "text-foreground hover:bg-muted"}`}
+                className={`flex min-h-16 w-full items-center gap-4 rounded-xl px-5 py-4 text-left transition-all ${
+                  selected === index
+                    ? "bg-primary text-white shadow-md shadow-blue-500/20"
+                    : "text-foreground hover:bg-muted"
+                }`}
               >
-                <span aria-hidden="true" className="text-[13px] tabular-nums">
+                <span
+                  aria-hidden="true"
+                  className={`text-xs font-bold tabular-nums ${
+                    selected === index ? "text-blue-100" : "text-smoke"
+                  }`}
+                >
                   0{index + 1}
                 </span>
-                <span className="min-w-0 flex-1 text-[19px] font-semibold leading-snug md:text-[21px]">
+                <span className="min-w-0 flex-1 text-base md:text-lg font-semibold leading-snug">
                   {point.challenge}
                 </span>
                 <ArrowDown
                   aria-hidden="true"
                   size={18}
-                  className="shrink-0 lg:-rotate-90"
+                  className={`shrink-0 lg:-rotate-90 transition-transform ${
+                    selected === index ? "text-white" : "text-smoke"
+                  }`}
                 />
               </button>
             ))}
           </div>
-          <div className="min-w-0 rounded-[4px] border border-border bg-card p-6 md:p-9 lg:p-10">
+          <div className="min-w-0 rounded-2xl border border-border bg-white p-6 md:p-8 lg:p-10 shadow-sm">
             {startingPoints.map((point, index) => (
               <div
                 key={point.id}
@@ -144,26 +154,26 @@ export function StartingPoint() {
                 hidden={selected !== index}
                 tabIndex={0}
               >
-                <span className="text-eyebrow mb-4">A useful first step</span>
-                <h3 className="heading-card text-[30px] md:text-[34px]">
+                <span className="text-eyebrow mb-3">A useful first step</span>
+                <h3 className="heading-card text-2xl md:text-3xl font-bold mt-2">
                   {point.title}
                 </h3>
-                <p className="text-body mt-4 text-[17px]">
+                <p className="text-body mt-4 text-base">
                   {point.description}
                 </p>
-                <p className="mt-6 text-[14px] font-semibold">
+                <p className="mt-6 text-xs font-bold uppercase tracking-wider text-smoke">
                   Questions worth asking
                 </p>
                 <ul className="mt-3 space-y-3">
                   {point.questions.map((question) => (
                     <li
                       key={question}
-                      className="flex items-start gap-3 text-[16px] text-graphite"
+                      className="flex items-start gap-3 text-sm md:text-base text-graphite"
                     >
                       <Check
                         aria-hidden="true"
                         size={17}
-                        className="mt-1 shrink-0 text-primary"
+                        className="mt-0.5 shrink-0 text-primary"
                       />
                       <span>{question}</span>
                     </li>

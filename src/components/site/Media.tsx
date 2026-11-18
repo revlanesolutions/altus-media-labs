@@ -14,7 +14,7 @@ export function Media({
   image,
   priority = false,
   aspectRatio = "standard",
-  radiusClassName = "rounded-[24px]",
+  radiusClassName = "rounded-2xl",
   className = "",
   sizes = "(max-width: 767px) 100vw, 50vw",
 }: {

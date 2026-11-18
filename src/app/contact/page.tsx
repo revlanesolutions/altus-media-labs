@@ -36,7 +36,7 @@ export default async function ContactPage({
               services={getServiceOptions()}
             />
           </div>
-          <aside className="self-start border-t-2 border-terracotta pt-7 md:sticky md:top-[120px]">
+          <aside className="self-start border-t-2 border-primary pt-7 md:sticky md:top-[120px]">
             <span className="text-eyebrow mb-5">A good place to begin</span>
             <h2 className="heading-card">
               Let’s understand

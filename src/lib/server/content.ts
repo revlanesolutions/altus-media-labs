@@ -10,10 +10,11 @@ export function getProject(slug: string) {
   return caseStudies.find((p) => p.slug === slug);
 }
 export function getServiceOptions(): ServiceOption[] {
-  return services.map(({ slug, title, shortTitle }) => ({
+  return services.map(({ slug, title, shortTitle, tagline }) => ({
     slug,
     title,
     shortTitle,
+    tagline,
   }));
 }
 export function serviceTitles(slugs: string[]) {
