@@ -1,0 +1,32 @@
+@layer components {
+  .site-container {
+    width: min(100% - 80px, 1360px);
+    margin-inline: auto;
+  }
+  .site-section {
+    padding-block: 96px;
+  }
+  .section-divider {
+    border-top: 1px solid var(--color-border);
+  }
+  .reading-container {
+    max-width: 68ch;
+    margin-inline: auto;
+  }
+  @media (max-width: 1023px) {
+    .site-container {
+      width: calc(100% - 64px);
+    }
+    .site-section {
+      padding-block: 80px;
+    }
+  }
+  @media (max-width: 767px) {
+    .site-container {
+      width: calc(100% - 40px);
+    }
+    .site-section {
+      padding-block: 56px;
+    }
+  }
+}

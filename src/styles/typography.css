@@ -1,0 +1,58 @@
+@layer components {
+  .text-eyebrow {
+    display: block;
+    color: var(--color-terracotta);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .heading-display {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: clamp(44px, 6vw, 80px);
+    font-weight: 450;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    text-wrap: balance;
+  }
+  .heading-section {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 450;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .heading-card {
+    font-family: var(--font-newsreader), Georgia, serif;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  .text-lead {
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--color-graphite);
+    max-width: 62ch;
+  }
+  .text-body {
+    color: var(--color-graphite);
+    max-width: 65ch;
+  }
+  .text-meta {
+    font-size: 14px;
+    color: var(--color-smoke);
+    line-height: 1.5;
+  }
+  .text-reading {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--color-graphite);
+  }
+  @media (max-width: 767px) {
+    .text-lead,
+    .text-reading {
+      font-size: 18px;
+    }
+  }
+}
