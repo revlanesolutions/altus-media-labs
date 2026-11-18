@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { services } from "@/data/services";
 import { homeServiceSummaries } from "@/data/homepage";
