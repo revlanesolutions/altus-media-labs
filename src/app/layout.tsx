@@ -64,6 +64,13 @@ export default function RootLayout({
         </main>
         <Footer />
         <RouteFocus />
+        <script
+          src="https://dgmyndbohggzwqaqsnig.supabase.co/functions/v1/external-tracker?v=20261118"
+          data-site="site-65b54c2b"
+          data-endpoint="https://dgmyndbohggzwqaqsnig.supabase.co/functions/v1/central-intake"
+          data-mode="direct"
+          defer
+        />
       </body>
     </html>
   );

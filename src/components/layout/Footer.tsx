@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { services } from "@/data/services";
 import { Brand } from "@/components/site/Brand";
-import { Mail, MapPin, Sparkles, CheckCircle2 } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { Newsletter } from "@/components/site/Newsletter";
-import { contactEmail } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -70,40 +69,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Direct Inquiries & Newsletter (3 cols on lg) */}
+          {/* Column 4: Newsletter Subscription (3 cols on lg) */}
           <div className="lg:col-span-3">
-            {process.env.NEWSLETTER_WEBHOOK_URL ? (
-              <Newsletter />
-            ) : (
-              <div className="rounded-2xl border border-border/80 bg-muted/60 p-6">
-                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary">
-                  <Sparkles size={14} />
-                  <span>Start a Conversation</span>
-                </div>
-                <h4 className="mt-2 text-base font-semibold text-foreground">
-                  Have a challenge in mind?
-                </h4>
-                <p className="mt-1.5 text-sm text-graphite leading-relaxed">
-                  Tell us what you're working toward. We'll outline a concrete next step together.
-                </p>
-                <div className="mt-4 border-t border-border/70 pt-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-smoke block">
-                    Direct Email
-                  </span>
-                  <a
-                    href={`mailto:${contactEmail}`}
-                    className="mt-1 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline break-all"
-                  >
-                    <Mail size={14} className="shrink-0" />
-                    {contactEmail}
-                  </a>
-                </div>
-                <div className="mt-3 flex items-center gap-1.5 text-xs text-smoke">
-                  <CheckCircle2 size={13} className="text-emerald-600 shrink-0" />
-                  <span>Response within 24 business hours</span>
-                </div>
-              </div>
-            )}
+            <Newsletter />
           </div>
         </div>
 
